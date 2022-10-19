@@ -1,43 +1,49 @@
-#include <bits/stdc++.h>
+#include<iostream>
 using namespace std;
-
-int Partition(int arr[], int s, int e){
-    int pivot= arr[e];
-    int i = s-1;
-    for(int j=s; j<e; j++){
-        if(arr[j]<pivot){
-            i++;
-            swap(arr[i], arr[j]);
-        }
-    }
-    swap(arr[i+1], arr[e]);
-    return i+1;
+void sort(int* arr, int size)
+{
+	int temp = 0;
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = i + 1; j < size; j++)
+		{
+			if (arr[i] > arr[j])
+			{
+				temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+			}
+		}
+	}
+	cout << "sorted array" << endl;
+	cout << "{";
+	for (int i = 0; i < size; i++)
+	{
+		cout << arr[i] << ",";
+	}
+	cout << "}";
 }
-void quickSort(int arr[], int s, int e){
-    if(s<e)         
-    {  int p = Partition(arr, s, e);
-       quickSort(arr, s,(p-1)); 
-       quickSort(arr, (p+1), e);   
 
-    }
-}
 int main()
-{   
-    int n;
-    cout<<"\nEnter the number of elements: ";
-    cin>>n;
-    cout<<endl;
-    int arr[n];   //  create array with given number of elements.
-    cout<<"Enter the elements to be sorted: ";
-    for(int i=0; i<n; i++){
-        cin>>arr[i];  //  taking array input.
-    }
-    cout<<endl;
-    quickSort(arr, 0, n-1);
-    cout<< "The sorted elements are - ";
-    for(int i=0; i<n; i++){
-        cout<< arr[i] <<" ";
-    }
-    cout<<endl<<endl;
-    return 0;
+{
+	int size = 0;
+	int *arr;
+	cout << "enter size" << endl;
+	cin >> size;
+	arr = new int[size];
+	cout << "enter elements of array " << endl;
+	for (int i = 0; i < size;i++)
+	{
+		cin >> arr[i];
+	}
+	cout << "entered elements are" << endl;
+	cout << "{";
+	for (int i = 0; i < size; i++)
+	{
+		cout << arr[i]<<",";
+	}
+	cout << "}";
+	cout << endl;
+	sort(arr, size);
+
 }
